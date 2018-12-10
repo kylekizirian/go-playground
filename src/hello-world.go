@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"time"
 )
 
@@ -22,6 +23,9 @@ func findLargestPrime(max uint64) uint64 {
 				isPrime = false
 				break
 			}
+			if float64(num) > math.Sqrt(float64(i)) {
+				break
+			}
 		}
 		if isPrime {
 			primeList = append(primeList, i)
@@ -33,7 +37,7 @@ func findLargestPrime(max uint64) uint64 {
 }
 
 func main() {
-	var primeUnder uint64 = 1000000
+	var primeUnder uint64 = 100000000
 	largestPrimeUnder := findLargestPrime(primeUnder)
 	fmt.Printf("Largest prime under %d = %d\n", primeUnder, largestPrimeUnder)
 }
